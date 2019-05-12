@@ -16,7 +16,7 @@ func getName_Email(name, email string) nameAndEmail {
 		Email: email}
 	return response
 }
-
+//Endcode, gør om navn og 
 func Encode(name, email string) []byte {
 	input := getName_Email(name, email)
 	output, err := json.Marshal(input)
