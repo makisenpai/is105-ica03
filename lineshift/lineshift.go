@@ -1,37 +1,29 @@
-package main
+package lineshift
 
-import ()
-	"github.com/arnekd/ICA02/fileutils/"
+import (
 	"fmt"
 	"io/ioutil"
-	"os"
+	"log"
 	"strings"
 )
 
-func DetermineLineshift(bSlice []byte) bool {
+func SearchForLineshift(fileToSearch string) {
 
-	for _, b := range bSlice {
-		if b == 13 {
-			return true
-		}
-	}
-	return false
-}
-
-func main() {
-
-	if len(os.Args) == 1 {
-		return
+	// Leser fil inn fil til content
+	content, err := ioutil.ReadFile(fileToSearch)
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	bSlice := fileutils.FileToByteslice(os.Args[1])
+	// Lagrer innholdet i content som string formatert med % X
+	contentAsString := fmt.Sprintf("% X", content)
 
-	windows := DetermineLineshift(bSlice)
-
-	if windows {
-		fmt.Println("Windows file")
+	// Sjekker hvilken form for linjeskift en fil inneholder
+	if strings.Contains(contentAsString, "0D 0A") {
+		fmt.Println("Filen inneholder \\r\\n og er formatert for Windows.")
+	} else if strings.Contains(contentAsString, "0A") && !strings.Contains(contentAsString, "0D") {
+		fmt.Println("Filen inneholder \\n og er formatert for Unix.")
 	} else {
-		fmt.Println("Unix/Mac file")
+		fmt.Println("Filen har ikke linjeskift.")
 	}
-
 }
