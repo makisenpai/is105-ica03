@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net"
 )
 
@@ -11,10 +11,10 @@ func handler(c net.Conn) {
 }
 
 func main() {
-
+	fmt.Println("Starter Server")
 	l, err := net.Listen("tcp", ":8000")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	for {
 
