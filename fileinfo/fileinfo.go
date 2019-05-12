@@ -52,7 +52,7 @@ func ReadFileinfo(filename string) {
 	if file&os.ModeCharDevice != 0 {
 		fmt.Println("Is a Unix character device")
 	} else {
-		fmt.Println("Is not a Unix chracter device")
+		fmt.Println("Is not a Unix character device")
 	}
 
 	if file&os.ModeSymlink != 0 {
