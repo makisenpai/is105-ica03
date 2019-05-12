@@ -1,30 +1,18 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"net"
 )
 
-type User struct {
-	Name string
-	Mail string
-}
-
-func handler(c net.Conn, b []byte) {
-	c.Write(b)
+func handler(c net.Conn) {
+	c.Write([]byte("ok"))
 	c.Close()
 }
 
 func main() {
 
-	u := User{"Martin Stenberg", "Martin.v.stenberg@gmail.com"}
-	b, err := json.Marshal(u)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	l, err := net.Listen("tcp", ":5000")
+	l, err := net.Listen("tcp", ":8000")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,6 +22,6 @@ func main() {
 		if err != nil {
 			continue
 		}
-		go handler(c, b)
+		go handler(c)
 	}
 }
