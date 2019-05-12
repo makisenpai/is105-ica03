@@ -9,7 +9,7 @@ type nameAndEmail struct {
 	Name  string
 }
 
-func getNameAndEmail(name, email string) nameAndEmail {
+func getName_Email(name, email string) nameAndEmail {
 
 	response := nameAndEmail{
 		Name:  name,
@@ -18,7 +18,7 @@ func getNameAndEmail(name, email string) nameAndEmail {
 }
 
 func Encode(name, email string) []byte {
-	input := getNameAndEmail(name, email)
+	input := getName_Email(name, email)
 	output, err := json.Marshal(input)
 	if err != nil {
 		panic(err)
