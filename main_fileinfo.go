@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/arnekd/is105-ica03/lineshift"
 	"os"
+
+	"github.com/makisenpai/is105-ica03/lineshift"
 )
 
 func main() {
