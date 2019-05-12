@@ -9,12 +9,12 @@ import (
 
 func main() {
 
-	content1, err := ioutil.ReadFile("text1.txt")
+	content1, err := ioutil.ReadFile("files/text1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	content2, err2 := ioutil.ReadFile("text2.txt")
+	content2, err2 := ioutil.ReadFile("files/text2.txt")
 	if err2 != nil {
 		log.Fatal(err)
 	}
